@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model HeroContent {
+  id          Int      @id @default(autoincrement())
+  title       String
+  subtitle    String
+  description String
+  image       String?
+  language    LanguageEnum
+}
+
+model HeroSlide {
+  id          Int      @id @default(autoincrement())
+  title       String
+  subtitle    String
+  description String
+  image       String?
+  order       Int
+  language    LanguageEnum
+}
+
+model ContentBlock {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  language  LanguageEnum
+}
+
+enum LanguageEnum {
+  ENGLISH
+  ARABIC
+}
